@@ -37,6 +37,24 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    flavorDimensions += listOf("default")
+    productFlavors {
+        create("prod") {
+            dimension = "default"
+            manifestPlaceholders["appName"] = "flutter_template"
+        }
+        create("stg") {
+            dimension = "default"
+            applicationIdSuffix = ".stg"
+            manifestPlaceholders["appName"] = "[STG] flutter_template"
+        }
+        create("dev") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders["appName"] = "[DEV] flutter_template"
+        }
+    }
 }
 
 flutter {
